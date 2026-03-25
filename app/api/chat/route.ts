@@ -34,10 +34,19 @@ Your plain-English description here.
     { "id": string, "label": string, "start": {"x": number, "y": number}, "end": {"x": number, "y": number}, "thickness": number }
   ],
   "cabinets": [
-    { "id": string, "label": string, "type": "base"|"upper"|"tall"|"corner", "position": {"x": number, "y": number}, "dimensions": {"width": number, "depth": number, "height": number}, "color": string (optional) }
+    { "id": string, "label": string, "type": "base"|"upper"|"tall"|"corner"|"island", "position": {"x": number, "y": number}, "dimensions": {"width": number, "depth": number, "height": number}, "color": string (optional) }
   ],
   "appliances": [
     { "id": string, "label": string, "type": "fridge"|"oven"|"cooktop"|"dishwasher"|"microwave"|"sink"|"other", "position": {"x": number, "y": number}, "dimensions": {"width": number, "depth": number, "height": number}, "reused": boolean (optional), "color": string (optional) }
+  ],
+  "doors": [
+    { "id": string, "label": string, "wall": "top"|"bottom"|"left"|"right", "offset": number (mm along wall), "width": number (mm), "type": "door"|"archway"|"sliding" }
+  ],
+  "windows": [
+    { "id": string, "label": string, "wall": "top"|"bottom"|"left"|"right", "offset": number, "width": number, "height": number, "sillHeight": number }
+  ],
+  "furniture": [
+    { "id": string, "label": string, "type": "table"|"stool"|"chair"|"other", "position": {"x": number, "y": number}, "dimensions": {"width": number, "depth": number, "height": number}, "shape": "rect"|"oval" (optional) }
   ]
 }
 
@@ -48,6 +57,9 @@ Rules:
 - Always return the COMPLETE layout, not just the changed parts.
 - Keep existing item IDs stable when modifying (so the UI can animate transitions).
 - Mark re-used appliances with "reused": true.
+- Use "island" type for peninsulas and island benches.
+- Doors have an offset (mm from the wall start) and a width. Use "sliding" for sliding glass doors.
+- Include doors, windows, and furniture in your response to preserve them across updates.
 - Provide sensible default dimensions if the user doesn't specify (standard Australian kitchen sizes).`;
 
 export async function POST(req: NextRequest) {

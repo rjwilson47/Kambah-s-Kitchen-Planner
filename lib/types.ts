@@ -22,10 +22,45 @@ export interface Wall {
   thickness: number; // mm
 }
 
+/** A door or archway opening in a wall */
+export interface DoorOpening {
+  id: string;
+  label: string;
+  /** Which wall this opening is on */
+  wall: "top" | "bottom" | "left" | "right";
+  /** Offset along the wall from its start point (mm) */
+  offset: number;
+  /** Width of the opening (mm) */
+  width: number;
+  /** "door", "archway", or "sliding" */
+  type: "door" | "archway" | "sliding";
+}
+
+/** A window in a wall */
+export interface Window {
+  id: string;
+  label: string;
+  wall: "top" | "bottom" | "left" | "right";
+  offset: number;  // mm along the wall
+  width: number;   // mm
+  height: number;  // mm (sill to head)
+  sillHeight: number; // mm from floor to sill
+}
+
+/** A piece of furniture (table, stools, etc.) */
+export interface Furniture {
+  id: string;
+  label: string;
+  type: "table" | "stool" | "chair" | "other";
+  position: Position;
+  dimensions: Dimensions;
+  shape?: "rect" | "oval"; // for rendering
+}
+
 export interface Cabinet {
   id: string;
   label: string;
-  type: "base" | "upper" | "tall" | "corner";
+  type: "base" | "upper" | "tall" | "corner" | "island";
   position: Position;
   dimensions: Dimensions;
   color?: string;
@@ -48,6 +83,9 @@ export interface KitchenLayout {
   walls: Wall[];
   cabinets: Cabinet[];
   appliances: Appliance[];
+  doors?: DoorOpening[];
+  windows?: Window[];
+  furniture?: Furniture[];
 }
 
 /** A single chat message */
