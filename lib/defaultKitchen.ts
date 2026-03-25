@@ -109,7 +109,7 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "draws-microwave",
       label: "Draws / Microwave Tower",
       type: "tall",
-      position: { x: 100, y: 3095 },    // 3695 - 100 (wall) - 600 (depth) + 100 = 3095
+      position: { x: 100, y: 3045 },    // wall inner face (3645) - 600 depth = 3045
       dimensions: { width: 660, depth: 600, height: 2100 },
     },
 
@@ -128,7 +128,7 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "peninsula",
       label: "Peninsula",
       type: "island",
-      position: { x: 680, y: 1700 },
+      position: { x: 580, y: 1700 },    // left edge aligns with sink cabinet right edge
       dimensions: { width: 1220, depth: 650, height: 870 },
     },
 
@@ -148,7 +148,7 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "fridge",
       label: "Fridge (re-use)",
       type: "fridge",
-      position: { x: 760, y: 3095 },   // right of draws/microwave tower
+      position: { x: 760, y: 2945 },   // right of draws/microwave tower; wall face (3645) - 700 depth
       dimensions: { width: 820, depth: 700, height: 1800 },
       reused: true,
     },
@@ -158,7 +158,7 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "dishwasher",
       label: "Dishwasher",
       type: "dishwasher",
-      position: { x: 100, y: 2780 },
+      position: { x: 100, y: 2800 },   // flush below sink base (2200 + 600)
       dimensions: { width: 600, depth: 600, height: 870 },
       reused: true, // Bosch — confirm re-use
     },
@@ -168,7 +168,7 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "oven",
       label: "Oven",
       type: "oven",
-      position: { x: 980, y: 1700 },   // 680 + 300 (left filler) = 980
+      position: { x: 880, y: 1700 },   // 580 + 300 (left filler) = 880
       dimensions: { width: 600, depth: 650, height: 600 },
     },
 
@@ -177,7 +177,7 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "sink",
       label: "Sink",
       type: "sink",
-      position: { x: 180, y: 2280 },   // inset within sink base cabinet
+      position: { x: 160, y: 2280 },   // inset within sink base cabinet
       dimensions: { width: 440, depth: 400, height: 200 },
     },
   ],
@@ -197,14 +197,14 @@ export const DEFAULT_KITCHEN: KitchenLayout = {
       id: "stool-1",
       label: "Stool",
       type: "stool",
-      position: { x: 1950, y: 1800 },
+      position: { x: 1850, y: 1800 },   // just past peninsula right edge (580+1220=1800)
       dimensions: { width: 400, depth: 400, height: 650 },
     },
     {
       id: "stool-2",
       label: "Stool",
       type: "stool",
-      position: { x: 1950, y: 2100 },
+      position: { x: 1850, y: 2050 },
       dimensions: { width: 400, depth: 400, height: 650 },
     },
   ],
